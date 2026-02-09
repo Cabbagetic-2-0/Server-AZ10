@@ -176,38 +176,45 @@
     </div>
 
     <script>
-        // CONFIG: Update these to your server info
-        const ip = "69.9.185.19";
-        const port = "27042";
+    // 1. Set your info here once
+    const ip = "69.9.185.19";
+    const port = "27042";
+    const name = "AZ10 Bedrock Server";
 
-        // Copy IP function
-        function copyIP() {
-            const fullIP = ip + ":" + port;
-            navigator.clipboard.writeText(fullIP);
-            alert("IP Copied: " + fullIP);
-        }
+    // 2. The "Hidden Link" function for iOS/Android compatibility
+    function launchMinecraft() {
+        // This format is the most stable for adding servers
+        const deepLink = `minecraft://?addExternalServer=${name}%7C${ip}:${port}`;
 
-        // Status Checker function
-        async function checkStatus() {
-            try {
-                const response = await fetch(`https://api.mcstatus.io/v2/status/bedrock/${ip}:${port}`);
-                const data = await response.json();
-                const statusElement = document.getElementById('status');
-                
-                if (data.online) {
-                    statusElement.innerText = "ONLINE (" + data.players.online + ")";
-                    statusElement.style.color = "#55ff55";
-                } else {
-                    statusElement.innerText = "OFFLINE";
-                    statusElement.style.color = "#ff5555";
-                }
-            } catch (e) {
-                document.getElementById('status').innerText = "ERROR";
+        const link = document.createElement('a');
+        link.href = deepLink;
+        link.rel = "noreferrer"; 
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // 3. Keep your Status Checker here too
+    async function checkStatus() {
+        try {
+            const response = await fetch(`https://api.mcstatus.io/v2/status/bedrock/${ip}:${port}`);
+            const data = await response.json();
+            const statusElement = document.getElementById('status');
+            
+            if (data.online) {
+                statusElement.innerText = "ONLINE (" + data.players.online + ")";
+                statusElement.style.color = "#55ff55";
+            } else {
+                statusElement.innerText = "OFFLINE";
+                statusElement.style.color = "#ff5555";
             }
+        } catch (e) {
+            document.getElementById('status').innerText = "ERROR";
         }
-
-        checkStatus();
+    }
+    checkStatus();
     </script>
+
 
 </body>
 </html>
