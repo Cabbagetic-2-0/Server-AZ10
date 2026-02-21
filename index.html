@@ -6,19 +6,19 @@
     <title>AZ10 Minecraft Server Website Page</title>
 
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, sans-serif; 
-            background-color: #1a1a1a; 
-            color: white; 
-            text-align: center; 
-            padding: 50px 10px; 
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 50px 10px;
             margin: 0;
         }
 
         h1 { font-size: 2.5rem; margin-bottom: 10px; color: #ffffff; }
 
-        #status-box { 
-            margin: 10px auto 30px auto; 
+        #status-box {
+            margin: 10px auto 30px auto;
             background: #2a2a2a;
             padding: 10px 20px;
             display: inline-block;
@@ -34,12 +34,12 @@
             gap: 15px;
         }
 
-        .btn { 
-            display: inline-block; 
-            padding: 15px 30px; 
-            color: white; 
-            text-decoration: none; 
-            font-weight: bold; 
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
             font-size: 18px;
             border: 2px solid #000;
             cursor: pointer;
@@ -80,13 +80,23 @@
 
         .rules-container h2 { color: #ffaa00; margin-top: 0; text-align: center; font-size: 1.5rem; }
         .rules-list { list-style: none; padding: 0; }
-        .rules-list li { margin-bottom: 12px; padding-left: 10px; border-left: 4px solid #388e3c; }
+        .rules-list li { margin-bottom: 12px; padding-left: 10px; border-left: 4px solid #d1180f; }
+
+        .rules-container h3 { color: #c5dade; margin-top: 0; text-align: center; font-size: 1.5rem; }
+
+        .rules-container h4 { color: #c7d455; margin-top: 0; text-align: center; font-size: 1.5rem; }
+        .rules-list { list-style: none; padding: 0; }
+        .rules-list li { margin-bottom: 12px; padding-left: 10px; border-left: 4px solid #aed4af; }
+
+        .rules-container h5 { color: #8502e8; margin-top: 0; text-align: center; font-size: 1.5rem; }
+        .rules-list { list-style: none; padding: 0; }
+        .rules-list li { margin-bottom: 12px; padding-left: 10px; border-left: 4px solid #e8cd02; }
 
         .footer-version { margin-top: 20px; color: #888; font-size: 0.8rem; }
-        
+
         /* CSS to hide the iOS help by default */
         #ios-notice {
-            display: none; 
+            display: none;
             background: rgba(255, 170, 0, 0.1);
             border: 1px dashed #ffaa00;
             padding: 15px;
@@ -129,18 +139,54 @@
         </p>
     </div>
 
+    <div class="rules-container" style="border-left: 4px solid #36b34a;">
+        <h2 style="color: #36b34a;">📜 Server Rules & Fair Play</h2>
+        <p style="font-size: 0.9rem; line-height: 1.4;">
+            Using hacks, mods, exploits, or any unfair advantages is STRICTLY PROHIBITED.
+        </p>
+    </div>
+
     <div class="rules-container">
-        <h2>📜 Server Rules</h2>
+        <h2>This includes (but is not limited to)</h2>
         <ul class="rules-list">
-            <li>✅ No Griefing or Stealing</li>
-            <li>✅ Respect All Players</li>
-            <li>✅ No Hacking / Cheating</li>
-            <li>✅ No Chat Spamming</li>
+            <li>❌ X-ray</li>
+            <li>❌ Fly</li>
+            <li>❌ Kill Aura</li>
+            <li>❌ Duping</li>
+            <li>❌ Any client-side cheats</li>
+        </ul>
+    </div>
+
+    <div class="rules-container">
+        <h3>⚠️ Violations will result in punishment (warn / kick / ban depending on severity).</h3>
+    </div>
+
+    <div class="rules-container" style="border-left: 4px solid #32c0d9;">
+        <h2 style="color: #36b34a;">📝 Reporting Players</h2>
+        <p style="font-size: 0.9rem; line-height: 1.4;">
+            If you encounter a rule breaker, report them immediately in the <a href="https://discord.com/channels/1455561469390491731/1455573147850903552">reports-📝</a> ⁠ channel.
+        </p>
+    </div>
+
+    <div class="rules-container">
+        <h4>Please include</h4>
+        <ul class="rules-list">
+            <li>• Player IGN</li>
+            <li>• What happened</li>
+            <li>• Proof (screenshots or video)</li>
+        </ul>
+    </div>
+
+    <div class="rules-container">
+        <h5>📌 Important</h5>
+        <ul class="rules-list">
+            <li>Make sure all required details are included before submitting a report.</li>
+            <li>✨ Play fair. Have fun. Respect everyone. ✨</li>
         </ul>
     </div>
 
     <div class="footer-version">Minecraft Bedrock: 1.26.0</div>
-    <div class="footer-version">Website Version: 0.8.3 (updated server IP address)</div>
+    <div class="footer-version">Website Version: 0.9 (if you find any bug or issue, do not hesitate to create <a href="https://github.com/Cabbagetic-2-0/Server-AZ10/issues/new">New issue</a>)</div>
 
     <script>
     const ip = "az10.joinmc.playit.plus";
@@ -175,7 +221,7 @@
             const response = await fetch(`https://api.mcstatus.io/v2/status/bedrock/${ip}:${port}`);
             const data = await response.json();
             const statusElement = document.getElementById('status');
-            
+
             if (data.online) {
                 statusElement.innerText = "ONLINE (" + data.players.online + ")";
                 statusElement.style.color = "#55ff55";
